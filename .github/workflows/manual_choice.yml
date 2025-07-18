@@ -1,0 +1,24 @@
+name: Manual
+on:
+  workflow_dispatch:
+    inputs:
+      greeting:
+        type: string
+        description: a cheerful word
+        required: true
+        default: Hello
+      log-level:
+        type: choice
+        description: the level of logging
+        required: true
+        default: info
+        options:
+          - info
+          - debug
+          - error
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ inputs.greeting }}, はろー"
+      - uses: actions/checkout@v4
